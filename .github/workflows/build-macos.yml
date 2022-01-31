@@ -9,11 +9,12 @@ jobs:
       - run: python -m pip install "protobuf"
       - uses: actions/checkout@v2
       - name: Configure project
-      - run: cmake -S. -Bbuild \
-            -DENABLE_HEAVY_TESTS=ON \
-            -DVIRGIL_C_MT_TESTING=ON \
-            -DENABLE_BENCHMARKING=ON \
-            -DVIRGIL_POST_QUANTUM=ON \
+      - run: >
+          cmake -S. -Bbuild
+            -DENABLE_HEAVY_TESTS=ON
+            -DVIRGIL_C_MT_TESTING=ON
+            -DENABLE_BENCHMARKING=ON
+            -DVIRGIL_POST_QUANTUM=ON
             -DVIRGIL_PROGRAMS=ON
       - name: Build project
       - run: cmake --build build -- -j$(nproc)
