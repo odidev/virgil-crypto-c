@@ -5,12 +5,13 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: cmake --version
-      - run: python --version
-      - run: python -m pip install "protobuf"
+      - run: python3 --version
+      - run: pip3 install protobuf
       - uses: actions/checkout@v2
       - name: Configure project
         run: >
           cmake -S. -Bbuild
+          -DED25519_AMD64_RADIX_64_24K=ON -DED25519_REF10=OFF
           -DENABLE_HEAVY_TESTS=ON
           -DVIRGIL_C_MT_TESTING=ON
           -DENABLE_BENCHMARKING=ON
@@ -18,3 +19,9 @@ jobs:
           -DVIRGIL_PROGRAMS=ON
       - name: Build project
         run: cmake --build build -- -j$(sysctl -n hw.physicalcpu)
+      - name: Run tests
+        run: ctest -L --output-on-failure
+        working-directory: build
+      - name: Run benchmarks
+        run: ./benchmarks/foundation/bench
+        working-directory: build
