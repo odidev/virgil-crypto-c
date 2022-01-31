@@ -1,0 +1,11 @@
+name: build-macos
+on: [push]
+jobs:
+  check-swift-package-manager:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: brew install cmake
+      - run: python -m pip install "protobuf"
+      - rub: cmake --version
+      - rub: python --version
