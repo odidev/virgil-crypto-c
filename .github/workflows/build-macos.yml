@@ -15,12 +15,11 @@ jobs:
           -DENABLE_HEAVY_TESTS=ON
           -DVIRGIL_C_MT_TESTING=ON
           -DENABLE_BENCHMARKING=ON
-          -DVIRGIL_POST_QUANTUM=ON
           -DVIRGIL_PROGRAMS=ON
       - name: Build project
         run: cmake --build build -- -j$(sysctl -n hw.physicalcpu)
       - name: Run tests
-        run: ctest -L --output-on-failure
+        run: ctest --output-on-failure
         working-directory: build
       - name: Run benchmarks
         run: ./benchmarks/foundation/bench
