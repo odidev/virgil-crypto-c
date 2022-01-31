@@ -17,4 +17,4 @@ jobs:
           -DVIRGIL_POST_QUANTUM=ON
           -DVIRGIL_PROGRAMS=ON
       - name: Build project
-        run: cmake --build build -- -j$(nproc)
+        run: cmake --build build -- -j$(sysctl -n hw.physicalcpu)
