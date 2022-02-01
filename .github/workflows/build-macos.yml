@@ -4,15 +4,15 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - run: cmake --version
-      - run: python3 --version
-      - run: pip3 install protobuf
       - uses: actions/checkout@v2
+      - name: Configure toolchain
+        run: |
+          cmake --version
+          python3 --version
+          pip3 install protobuf
       - name: Configure project
         run: >
           cmake -S. -Bbuild
-          -DED25519_AMD64_RADIX_64_24K=ON -DED25519_REF10=OFF
-          -DENABLE_HEAVY_TESTS=ON
           -DVIRGIL_C_MT_TESTING=ON
           -DENABLE_BENCHMARKING=ON
           -DVIRGIL_PROGRAMS=ON
@@ -21,6 +21,15 @@ jobs:
       - name: Run tests
         run: ctest --output-on-failure
         working-directory: build
-      - name: Run benchmarks
-        run: ./benchmarks/foundation/bench
-        working-directory: build
+
+  build-apple-xcframeworks:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure toolchain
+        run: |
+          cmake --version
+          python3 --version
+          pip3 install protobuf
+      - name: Build Frameworks
+        run: ./scripts/build_apple_frameworks.sh
