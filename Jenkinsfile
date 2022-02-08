@@ -66,58 +66,14 @@ node('master') {
 // --------------------------------------------------------------------------
 def nodes = [:]
 
-//
-//  Language: C
-//
-if (!params.DISABLE_C_BUILDS) {
-    nodes['lang-c-platform-linux'] = build_LangC_Unix('build-centos7', 'x86_64')
-    nodes['lang-c-platform-macos-x86_64'] = build_LangC_Unix('build-os-x', 'x86_64')
-    nodes['lang-c-platform-macos-arm64'] = build_LangC_Unix('build-os-x', 'arm64')
-    nodes['lang-c-platform-windows'] = build_LangC_Windows('build-win10')
-}
-
-//
-//  Language: PHP
-//
-if (!params.DISABLE_PHP_BUILDS) {
-    nodes['lang-php-platform-linux'] = build_LangPHP_Linux('build-centos7')
-    nodes['lang-php-platform-macos-x86_64'] = build_LangPHP_MacOS('build-os-x', 'x86_64')
-    nodes['lang-php-platform-macos-arm64'] = build_LangPHP_MacOS('build-os-x', 'arm64')
-    nodes['lang-php-platform-windows'] = build_LangPHP_Windows('build-win10')
-}
-
-
-//
-//  Language: Java
-//
-if (!params.DISABLE_JAVA_BUILDS) {
-    nodes['lang-java-platform-linux'] = build_LangJava_Linux('build-centos7')
-    nodes['lang-java-platform-macos-x86_64'] = build_LangJava_MacOS('build-os-x', 'x86_64')
-    nodes['lang-java-platform-macos-arm64'] = build_LangJava_MacOS('build-os-x', 'arm64')
-    nodes['lang-java-platform-windows'] = build_LangJava_Windows('build-win10')
-}
-
-
-//
-//  Language: Java Android
-//
-if (!params.DISABLE_ANDROID_BUILDS) {
-    nodes['lang-java-platform-android-x86'] = build_LangJava_Android('build-os-x', 'x86')
-    nodes['lang-java-platform-android-x86_64'] = build_LangJava_Android('build-os-x', 'x86_64')
-    nodes['lang-java-platform-android-armeabi-v7a'] = build_LangJava_Android('build-os-x', 'armeabi-v7a')
-    nodes['lang-java-platform-android-arm64-v8a'] = build_LangJava_Android('build-os-x', 'arm64-v8a')
-}
-
-
-//
 // Language: Python
 //
 if (!params.DISABLE_PYTHON_BUILDS) {
     nodes['lang-python-platform-linux'] = build_LangPython_Linux('build-centos7')
-    nodes['lang-python-platform-macos-x86_64'] = build_LangPython_MacOS('build-os-x', 'x86_64')
-    nodes['lang-python-platform-macos-arm64'] = build_LangPython_MacOS('build-os-x', 'arm64')
-    nodes['lang-python-platform-windows-x86'] = build_LangPython_Windows('build-win10', 'x86')
-    nodes['lang-python-platform-windows-x86_64'] = build_LangPython_Windows('build-win10', 'x86_64')
+//    nodes['lang-python-platform-macos-x86_64'] = build_LangPython_MacOS('build-os-x', 'x86_64')
+//    nodes['lang-python-platform-macos-arm64'] = build_LangPython_MacOS('build-os-x', 'arm64')
+//    nodes['lang-python-platform-windows-x86'] = build_LangPython_Windows('build-win10', 'x86')
+//    nodes['lang-python-platform-windows-x86_64'] = build_LangPython_Windows('build-win10', 'x86_64')
 }
 
 stage('Build') {
