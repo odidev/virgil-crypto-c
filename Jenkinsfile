@@ -69,7 +69,7 @@ def nodes = [:]
 // Language: Python
 //
 if (!params.DISABLE_PYTHON_BUILDS) {
-    nodes['lang-python-platform-linux'] = build_LangPython_Linux('build-centos7')
+    nodes['lang-python-platform-linux'] = build_LangPython_Linux('master')
 //    nodes['lang-python-platform-macos-x86_64'] = build_LangPython_MacOS('build-os-x', 'x86_64')
 //    nodes['lang-python-platform-macos-arm64'] = build_LangPython_MacOS('build-os-x', 'arm64')
 //    nodes['lang-python-platform-windows-x86'] = build_LangPython_Windows('build-win10', 'x86')
