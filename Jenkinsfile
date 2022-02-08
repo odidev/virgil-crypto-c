@@ -9,25 +9,25 @@ properties([
         booleanParam(name: 'RUN_ANDROID_TESTS', defaultValue: true,
             description: 'Run Android instrumental tests.'),
 
-        booleanParam(name: 'DISABLE_C_BUILDS', defaultValue: false,
+        booleanParam(name: 'DISABLE_C_BUILDS', defaultValue: true,
             description: 'Disable build of C artifacts'),
 
-        booleanParam(name: 'DISABLE_PHP_BUILDS', defaultValue: false,
+        booleanParam(name: 'DISABLE_PHP_BUILDS', defaultValue: true,
             description: 'Disable build of PHP artifacts'),
 
-        booleanParam(name: 'DISABLE_JAVA_BUILDS', defaultValue: false,
+        booleanParam(name: 'DISABLE_JAVA_BUILDS', defaultValue: true,
             description: 'Disable build of Java artifacts'),
 
-        booleanParam(name: 'DISABLE_ANDROID_BUILDS', defaultValue: false,
+        booleanParam(name: 'DISABLE_ANDROID_BUILDS', defaultValue: true,
             description: 'Disable build of Java Android artifacts'),
 
         booleanParam(name: 'DISABLE_PYTHON_BUILDS', defaultValue: false,
             description: 'Disable build of Python artifacts'),
 
-        booleanParam(name: 'DEPLOY_JAVA_ARTIFACTS', defaultValue: false,
+        booleanParam(name: 'DEPLOY_JAVA_ARTIFACTS', defaultValue: true,
             description: 'If build succeeded then Java artifacts will be deployed to the Maven repository.'),
 
-        booleanParam(name: 'DEPLOY_ANDROID_ARTIFACTS', defaultValue: false,
+        booleanParam(name: 'DEPLOY_ANDROID_ARTIFACTS', defaultValue: true,
             description: 'If build succeeded then Java Android artifacts will be deployed to the Maven repository.'),
 
         booleanParam(name: 'DEPLOY_PYTHON_ARTIFACTS', defaultValue: false,
